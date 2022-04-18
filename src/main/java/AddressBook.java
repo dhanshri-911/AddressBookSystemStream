@@ -1,23 +1,28 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class AddressBook {
-    List<Contacts> referenceBook = new LinkedList<Contacts>();
+    ArrayList<Contacts> referenceBook = new ArrayList<Contacts>();
+    public HashMap<String, ArrayList<Contacts>> personsByCity = new HashMap<String, ArrayList<Contacts>>();
+    public  HashMap<String, ArrayList<Contacts>> personsByState = new HashMap<String, ArrayList<Contacts>>();
     private int numOfContacts = 0;
 
-    public void addContact() {
+    public void addPerson() {
         System.out.println("Enter Person details:");
 
         Contacts contacts = intake();
-        boolean isDuplicate = referenceBook.stream().anyMatch(contact -> contacts.equals(contact));
+        boolean isDuplicate = referenceBook.stream().anyMatch(contact -> contact.equals(contact));
         if(isDuplicate) {
             System.out.println("Duplicate data entry. discarded");
         }
         else{
             referenceBook.add(contacts);
+            if(personsByCity.get(contacts.getCity()) == null) personsByCity.put(contacts.getCity(), new ArrayList<>());
+            personsByCity.get(contacts.getCity()).add(contacts);
+            if(personsByState.get(contacts.getState()) == null) personsByState.put(contacts.getState(), new ArrayList<>());
+            personsByState.get(contacts.getState()).add(contacts);
         }
+
     }
     public void searchByCity(String city,String firstName) {
         Predicate<Contacts> searchPerson = (contact -> contact.getCity().equals(city)&& contact.getFirstName().equals(firstName));
@@ -63,6 +68,17 @@ public class AddressBook {
         }
         output(contacts);
     }
+
+    public void personsInCity(String city) {
+        ArrayList<Contacts> list = personsByCity.get(city);
+        list.stream().forEach(person -> output(person));
+    }
+
+    public void personsInState(String State) {
+        ArrayList<Contacts> list = personsByState.get(State);
+        list.stream().forEach(person -> output(person));
+    }
+
 
     public void deleteContact(String name) {
         int i=0;
