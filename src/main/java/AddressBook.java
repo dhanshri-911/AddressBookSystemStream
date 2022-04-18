@@ -137,4 +137,10 @@ public class AddressBook {
         System.out.println("Enter Phone nmber : " + contacts.getPhoneNumber());
         System.out.println("Enter email : " + contacts.getEmail());
     }
+    public  void sortByFirstName() {
+        referenceBook.stream()
+                .sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+                .forEach(System.out::println);
+    }
+
 }
