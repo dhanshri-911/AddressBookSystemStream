@@ -38,8 +38,28 @@ public class AddressBookMain {
                     addressBook.deleteContact(sc.next());
                     break;
                 case 5:
-                    System.out.println("after sorting");
-                    addressBook.sortByFirstName();
+                    System.out.println("Sort by 1:firstName 2:zipCode 3:city 4:state");
+                    switch(sc.nextInt()) {
+                        case 1:
+                            System.out.println("after sorting");
+                            addressBook.sortByFirstName();
+                            break;
+                        case 2:
+                            System.out.println("after sorting");
+                            addressBook.sortByZip();
+                            break;
+                        case 3:
+                            System.out.println("after sorting");
+                            addressBook.sortByCity();
+                            break;
+                        case 4:
+                            System.out.println("after sorting");
+                            addressBook.sortByState();
+                            break;
+                        default:
+                            System.out.println("worng entry");
+                    }
+                    break;
                 default:
                     exit = false;
 

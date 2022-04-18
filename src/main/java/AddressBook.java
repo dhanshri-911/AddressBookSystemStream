@@ -142,5 +142,20 @@ public class AddressBook {
                 .sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
                 .forEach(System.out::println);
     }
+    public  void sortByZip() {
+        referenceBook.stream()
+                .sorted((contact1,contact2) -> contact1.getPinCode()-contact2.getPinCode())
+                .forEach(System.out::println);
+    }
+    public  void sortByCity() {
+        referenceBook.stream()
+                .sorted((contact1,contact2) -> contact1.getCity().compareTo(contact2.getCity()))
+                .forEach(System.out::println);
+    }
+    public  void sortByState() {
+        referenceBook.stream()
+                .sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
+                .forEach(System.out::println);
+    }
 
 }
