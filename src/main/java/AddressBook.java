@@ -45,6 +45,15 @@ public class AddressBook {
         referenceBook.add(intake());
     }
 
+
+    public int countByCity(String city) {
+
+        return (personsByCity.get(city)==null)?0:personsByCity.get(city).size();
+    }
+    public int countByState(String state) {
+        return personsByState.get(state)==null?0:personsByState.get(state).size();
+    }
+
     public void display() {
         Scanner sc = new Scanner(System.in);
         Contacts contacts = null;
