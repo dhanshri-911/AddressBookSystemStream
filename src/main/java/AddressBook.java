@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class AddressBook {
     List<Contacts> referenceBook = new LinkedList<Contacts>();
@@ -18,7 +19,14 @@ public class AddressBook {
             referenceBook.add(contacts);
         }
     }
-
+    public void searchByCity(String city,String firstName) {
+        Predicate<Contacts> searchPerson = (contact -> contact.getCity().equals(city)&& contact.getFirstName().equals(firstName));
+        referenceBook.stream().filter(searchPerson).forEach(contacts -> output(contacts));
+    }
+    public void searchByState(String state, String firstName) {
+        Predicate<Contacts> searchPerson = (contact -> contact.getState().equals(state)&& contact.getFirstName().equals(firstName));
+        referenceBook.stream().filter(searchPerson).forEach(contacts -> output(contacts));
+    }
     public void editContact(String name) {
         int i=0;
         for(i=0;i<referenceBook.size();i++) {
@@ -73,25 +81,25 @@ public class AddressBook {
 
     public static Contacts intake() {
         Scanner sc = new Scanner(System.in);
-        Contacts contacts1 = new Contacts();
+        Contacts contacts = new Contacts();
 
         System.out.println("Enter firstName:");
-        contacts1.setFirstName(sc.next());
+        contacts.setFirstName(sc.next());
         System.out.println("Enter SecondName:");
-        contacts1.setLastName(sc.next());
+        contacts.setLastName(sc.next());
         System.out.println("Enter Address:");
-        contacts1.setAddress(sc.next());
+        contacts.setAddress(sc.next());
         System.out.println("Enter City:");
-        contacts1.setCity(sc.next());
+        contacts.setCity(sc.next());
         System.out.println("Enter State:");
-        contacts1.setState(sc.next());
+        contacts.setState(sc.next());
         System.out.println("Enter Pin code:");
-        contacts1.setPinCode(sc.nextInt());
+        contacts.setPinCode(sc.nextInt());
         System.out.println("Enter Phone nmber:");
-        contacts1.setPhoneNumber(sc.next());
+        contacts.setPhoneNumber(sc.next());
         System.out.println("Enter email:");
-        contacts1.setEmail(sc.next());
-        return contacts1;
+        contacts.setEmail(sc.next());
+        return contacts;
     }
 
     public static void output(Contacts contacts) {

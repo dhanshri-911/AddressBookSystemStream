@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 
-    private static List<AddressBook> addressBooks = new LinkedList<AddressBook>();
-    private static String[] addressBookName = new String[10];
+    public static List<AddressBook> addressBooks = new LinkedList<AddressBook>();
+    public static String[] addressBookName = new String[10];
     private static int numOfBooks = 0;
 
     private boolean checkName(String name) {
@@ -15,7 +15,7 @@ public class AddressBookMain {
         return false;
     }
 
-    private static void addressMenu(AddressBook addressBook) {
+    public static void addressMenu(AddressBook addressBook) {
         Scanner sc = new Scanner(System.in);
         int option = 0;
         boolean exit = true;

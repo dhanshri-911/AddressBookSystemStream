@@ -1,4 +1,5 @@
-public class Contacts {private String firstName;
+public class Contacts {
+    private String firstName;
     private String lastName;
     private String address;
     private String city;
