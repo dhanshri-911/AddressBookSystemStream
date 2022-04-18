@@ -37,6 +37,9 @@ public class AddressBookMain {
                     System.out.println("Enter name");
                     addressBook.deleteContact(sc.next());
                     break;
+                case 5:
+                    System.out.println("after sorting");
+                    addressBook.sortByFirstName();
                 default:
                     exit = false;
 
