@@ -67,6 +67,17 @@ public class AddressBookSystem {
                         addressBookMain.personsInState(sc.next());
                     }
                     break;
+                case 5:
+                    System.out.println("Select 1: count by city    2: count by state");
+                    if(sc.nextInt() == 1) {
+                        System.out.println("Enter city name");
+                        addressBookMain.countByCity(sc.next());
+                    }
+                    else {
+                        System.out.println("Enter state name");
+                        addressBookMain.countByState(sc.next());
+                    }
+                    break;
                 default:
                     exit1 = false;
 
